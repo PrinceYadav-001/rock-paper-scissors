@@ -23,7 +23,7 @@ function getComputerChoice()
 
 function getHumanChoice()
 {
-    return prompt("Enter Choice: ").toLowerCase();
+    return prompt("This is a Console Game\nOpen Console(F12) after 5 Inputs\n\nEnter Choice: ").toLowerCase();
 }
 
 function playRound(humanChoice, computerChoice)
