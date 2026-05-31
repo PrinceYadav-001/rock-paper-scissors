@@ -26,8 +26,6 @@ function getHumanChoice()
     return prompt("Enter Choice: ").toLowerCase();
 }
 
-
-
 function playRound(humanChoice, computerChoice)
 {
     let choiceMap = {
@@ -63,7 +61,6 @@ function playRound(humanChoice, computerChoice)
     }
 }
 
-
 function playGame()
 {
     for (let i = 0; i < 5; i++)
@@ -81,9 +78,14 @@ function playGame()
     console.log("Computer Score = " + computerScore);
     console.log("Human Score = " + humanScore);
 
+    if (humanScore == computerScore){
+        console.log("It's a Draw");
+        return;
+    }
+
     (humanScore > computerScore) ? 
     console.log("You win the Game") :
-    console.log("You lose the Game");
+    console.log("You lose the Game, AI takes over the World @$}&(@Q!");
 }
 
 playGame();
