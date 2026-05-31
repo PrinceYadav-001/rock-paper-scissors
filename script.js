@@ -1,8 +1,6 @@
 let humanScore = 0;
 let computerScore = 0;
 
-console.log("File Loaded!");
-
 function getComputerChoice()
 {
     // pick a random number from 0, 1, 2
@@ -46,20 +44,49 @@ function playRound(humanChoice, computerChoice)
     // 1 toh win
     // -1 toh lose
     // 2 toh lose
-    // -2 toh win
+    // -2 toh wingetComputerChoice()
 
     switch(humanChoice - computerChoice)
     {
         case 0:
-            return "draw";
-            
+            return "It's a draw";
+
         case -1:
         case 2:
-            return "lose";
+            computerScore++;
+            return "You Lose";
 
         case -2:
         case 1:
-            return "win";
+            humanScore++;
+            return "You Win";
     }
 }
+
+
+function playGame()
+{
+    for (let i = 0; i < 5; i++)
+    {
+        let computerChoice = getComputerChoice();
+        let humanChoice = getHumanChoice();
+        let outcome = playRound(humanChoice, computerChoice);
+
+        console.log("You chose '" + humanChoice + "'");
+        console.log("Computer chose '" + computerChoice + "'");
+        console.log(outcome);
+        console.log(" ");
+    }
+
+    console.log("Computer Score = " + computerScore);
+    console.log("Human Score = " + humanScore);
+
+    (humanScore > computerScore) ? 
+    console.log("You win the Game") :
+    console.log("You lose the Game");
+}
+
+playGame();
+
+
 
