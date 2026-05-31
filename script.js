@@ -1,3 +1,6 @@
+let humanScore = 0;
+let computerScore = 0;
+
 console.log("File Loaded!");
 
 function getComputerChoice()
@@ -23,5 +26,40 @@ function getComputerChoice()
 function getHumanChoice()
 {
     return prompt("Enter Choice: ").toLowerCase();
+}
+
+
+
+function playRound(humanChoice, computerChoice)
+{
+    let choiceMap = {
+        "rock" : 0,
+        "paper" : 1,
+        "scissors" : 2,
+    }
+
+    humanChoice = choiceMap[humanChoice];
+    computerChoice = choiceMap[computerChoice];
+
+    // humanChoice - computerChoice =
+    // 0 toh draw
+    // 1 toh win
+    // -1 toh lose
+    // 2 toh lose
+    // -2 toh win
+
+    switch(humanChoice - computerChoice)
+    {
+        case 0:
+            return "draw";
+            
+        case -1:
+        case 2:
+            return "lose";
+
+        case -2:
+        case 1:
+            return "win";
+    }
 }
 
