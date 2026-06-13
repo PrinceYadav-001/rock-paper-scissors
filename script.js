@@ -1,33 +1,44 @@
+//setup
 let humanScore = 0;
 let computerScore = 0;
+const rockBtn = document.querySelector("#rock-btn");
+const paperBtn = document.querySelector("#paper-btn");
+const scissBtn = document.querySelector("#scissors-btn");
+const outcomeTxt = document.querySelector("#outcome-txt");
+const yourScoreTxt = document.querySelector("#your-score");
 
-function getComputerChoice()
+//add event Listeners
+rockBtn.addEventListener("click", () => playRound("rock"));
+paperBtn.addEventListener("click", () => playRound("paper"));
+scissBtn.addEventListener("click", () => playRound("scissors"));
+
+
+//main
+
+
+//function declaration
+
+function playRound(humanChoice)
 {
+    let computerChoice = "rock";
+
     // pick a random number from 0, 1, 2
     //   i.e. floor(random * 3)
     let randomNum = Math.floor(Math.random() * 3);
 
     //  if num = 0 toh "rock" ,
     //  if num = 1 toh "paper",
-    //  if num = 2 toh "scissors"
+    //  if num = 2 toh "scissors" 
     switch(randomNum){
         case 0:
-            return "rock";
+            computerChoice = "rock";
         case 1:
-            return "paper";
+            computerChoice = "paper";
         case 2:
-            return "scissors";
+            computerChoice = "scissors";
     }
+    
 
-}
-
-function getHumanChoice()
-{
-    return prompt("This is a Console Game\nOpen Console(F12) after 5 Inputs\n\nEnter Choice: ", "rock").toLowerCase();
-}
-
-function playRound(humanChoice, computerChoice)
-{
     let choiceMap = {
         "rock" : 0,
         "paper" : 1,
@@ -47,48 +58,38 @@ function playRound(humanChoice, computerChoice)
     switch(humanChoice - computerChoice)
     {
         case 0:
-            return "It's a draw";
+            break;
 
         case -1:
         case 2:
             computerScore++;
-            return "You Lose";
+            break;
 
         case -2:
         case 1:
             humanScore++;
-            return "You Win";
+            break;
     }
+
+    yourScoreTxt.textContent = humanScore;
+    checkEndgame();
 }
 
-function playGame()
+
+function checkEndgame()
 {
-    for (let i = 0; i < 5; i++)
+    if (humanScore == 5)
     {
-        let computerChoice = getComputerChoice();
-        let humanChoice = getHumanChoice();
-        let outcome = playRound(humanChoice, computerChoice);
-
-        console.log("You chose '" + humanChoice + "'");
-        console.log("Computer chose '" + computerChoice + "'");
-        console.log(outcome);
-        console.log(" ");
+        outcomeTxt.textContent = "You Win";
     }
-
-    console.log("Computer Score = " + computerScore);
-    console.log("Human Score = " + humanScore);
-
-    if (humanScore == computerScore){
-        console.log("It's a Draw");
-        return;
+    else if (humanScore == 5)
+    {
+        outcomeTxt.textContent = "You lose";
     }
-
-    (humanScore > computerScore) ? 
-    console.log("You win the Game") :
-    console.log("You lose the Game, AI takes over the World @$}&(@Q!");
 }
 
-playGame();
+
+
 
 
 
