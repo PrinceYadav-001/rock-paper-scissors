@@ -10,6 +10,7 @@ const ChoiceMap = {
 
 const rockBtn = document.querySelector("#rock-btn");
 const paperBtn = document.querySelector("#paper-btn");
+const playArea = document.querySelector(".play-area");
 const scissBtn = document.querySelector("#scissors-btn");
 const outcomeTxt = document.querySelector("#outcome-txt");
 const yourScoreTxt = document.querySelector("#your-score");
@@ -59,15 +60,18 @@ function updateScore(humanChoice, computerChoice)
     switch(humanChoice - computerChoice)
     {
         case 0:
+            playArea.style.backgroundColor = "#FACE68"
             break;
 
         case 1:
         case -2:
+            playArea.style.backgroundColor = "#A2CB8B";
             humanScore++;
             break;
         
         case 2:
         case -1:
+            playArea.style.backgroundColor = "#FA6868";
             computerScore++;
             break;
     }
