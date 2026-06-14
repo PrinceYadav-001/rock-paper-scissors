@@ -5,10 +5,14 @@
     align-items:center;
 }
 
+body
+{
+    background-color: lightcoral;
+}
+
 .play-area
 {
     display: flex;
-    gap : 10px;
 }
 
 .play-area img
@@ -20,6 +24,12 @@
 .play-area .computer-display
 {
     transform: scaleX(-1);
+    margin-left: -3px;
+}
+
+.play-area .player-display
+{
+    margin-right: -3px;
 }
 
 .play-btn
